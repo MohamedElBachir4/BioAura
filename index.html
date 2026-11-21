@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Olivara – زيت الزيتون الطبيعي المركز | BIO AURA</title>
+  <meta name="description" content="Olivara زيت زيتون طبيعي مركز من BIO AURA. اطلب الآن والدفع عند الاستلام مع توصيل لكل الولايات.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Playfair+Display:wght@600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            grove: {
+              950: '#0A1610',
+              900: '#0F2016',
+              800: '#1F3B27',
+              700: '#2A4F34',
+              600: '#3A6343',
+              200: '#DDE3CC',
+              100: '#EDF0E0',
+              50: '#F7F8F1',
+            },
+            gold: {
+              700: '#7E5C10',
+              600: '#A8791C',
+              400: '#E3BE6A',
+              300: '#F0D48A',
+            },
+            leaf: {
+              700: '#4A5742',
+              600: '#5A6650',
+              500: '#6B7560',
+              200: '#C9D1B3',
+              100: '#E9EDD9',
+            },
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            cairo: ['Cairo', 'sans-serif'],
+            body: ['Tajawal', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            soft: '0 18px 50px rgba(31, 59, 39, 0.12)',
+            glow: '0 0 0 1px rgba(168, 121, 28, 0.25), 0 12px 40px rgba(31, 59, 39, 0.18)',
+          },
+          keyframes: {
+            rise: {
+              '0%': { opacity: '0', transform: 'translateY(22px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fade: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            checkPop: {
+              '0%': { transform: 'scale(0.6)', opacity: '0' },
+              '100%': { transform: 'scale(1)', opacity: '1' },
+            },
+          },
+          animation: {
+            rise: 'rise 0.8s ease-out both',
+            fade: 'fade 1s ease-out both',
+            float: 'float 5s ease-in-out infinite',
+            check: 'checkPop 0.45s ease-out both',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(227, 190, 106, 0.18), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(31, 59, 39, 0.12), transparent 50%),
+        linear-gradient(180deg, #E9EDD9 0%, #F3F5EB 40%, #E9EDD9 100%);
+    }
+    .hero-veil {
+      background:
+        linear-gradient(180deg, rgba(10, 22, 16, 0.42) 0%, rgba(10, 22, 16, 0.22) 38%, rgba(10, 22, 16, 0.82) 100%),
+        linear-gradient(270deg, rgba(10, 22, 16, 0.55) 0%, rgba(10, 22, 16, 0.15) 48%, transparent 72%);
+    }
+    .field {
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .field:hover { border-color: #B7C09C; }
+    .field:focus {
+      outline: none;
+      border-color: #1F3B27;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(31, 59, 39, 0.12);
+    }
+    .choice {
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .choice[aria-pressed="true"] {
+      background: #1F3B27;
+      border-color: #1F3B27;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(31, 59, 39, 0.18);
+    }
+    .pack-card {
+      position: relative;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .pack-card[aria-pressed="true"] {
+      background: linear-gradient(180deg, #F7F8F1 0%, #FFFFFF 100%);
+      border-color: #1F3B27;
+      box-shadow: 0 0 0 1px #1F3B27, 0 12px 28px rgba(31, 59, 39, 0.12);
+      transform: translateY(-1px);
+    }
+    .pack-card[aria-pressed="true"] .pack-check {
+      opacity: 1;
+      background: #1F3B27;
+      border-color: #1F3B27;
+      color: #fff;
+    }
+    .pack-card[aria-pressed="true"] .pack-price { color: #7E5C10; }
+    .pack-card[aria-pressed="false"]:hover {
+      border-color: #A8791C;
+      background: #fff;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .leaf-pattern {
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(227, 190, 106, 0.08) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.05) 0 1.5px, transparent 2.5px);
+      background-size: 28px 28px, 40px 40px;
+    }
+  </style>
+</head>
+<body class="font-body text-[17px] leading-relaxed text-[#1B2616] antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-grove-950 text-white">
+    <div class="mx-auto flex max-w-6xl items-center justify-center px-4 py-2.5 sm:px-6">
+      <a href="#top" class="inline-flex items-center justify-center transition hover:opacity-90" aria-label="BIO AURA – Nature's Essence, Your Aura">
+        <img
+          src="./assets/logo.png"
+          alt="BIO AURA"
+          class="h-12 w-auto object-contain sm:h-14"
+          style="mix-blend-mode: screen"
+        >
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Product image + offers + order form -->
+    <section id="top" class="bg-grove-50">
+      <div class="mx-auto max-w-xl overflow-hidden">
+        <img
+          src="./assets/768f40c850779f85e970500e5e3ec429.jpg"
+          alt="علبة وقارورة Olivara من BIO AURA بين أغصان الزيتون"
+          class="block w-full object-cover object-top"
+          style="aspect-ratio: 5 / 4; max-height: 460px;"
+        >
+      </div>
+
+      <div class="mx-auto max-w-xl px-4 pb-1 pt-6 text-center sm:px-6">
+        <p class="text-[12px] font-bold tracking-[0.18em] text-gold-600" dir="ltr">BIO AURA</p>
+        <h1 class="mt-2 font-cairo text-2xl font-extrabold leading-snug text-grove-800 text-balance sm:text-[1.85rem]">
+          Olivara – زيت الزيتون الطبيعي المركز
+        </h1>
+        <p class="mx-auto mt-2 max-w-md text-[15px] text-leaf-700">
+          عناية طبيعية فاخرة، توصيل لكل الولايات والدفع عند الاستلام.
+        </p>
+      </div>
+    </section>
+
+    <!-- Order -->
+    <section id="order" class="px-4 pb-10 pt-5 sm:px-6">
+      <div class="mx-auto max-w-md overflow-hidden rounded-[28px] border border-grove-200 bg-white shadow-soft">
+        <div class="bg-grove-800 px-5 py-5 text-center text-white sm:px-7">
+          <h2 class="font-cairo text-[1.55rem] font-extrabold">اطلب الآن</h2>
+          <p class="mt-1 text-sm text-grove-100/85">املأ البيانات وسنتصل بك لتأكيد الطلب</p>
+        </div>
+
+        <div class="p-5 sm:p-7">
+          <div id="success" class="hidden animate-check flex-col items-center gap-3 rounded-2xl bg-grove-100 px-4 py-10 text-center" role="status">
+            <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-grove-800 text-white">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            </span>
+            <h3 class="font-cairo text-xl font-extrabold text-grove-800">تم استلام طلبك</h3>
+            <p class="text-sm text-leaf-700">سيتصل بك فريقنا قريبًا لتأكيد الطلب وموعد التوصيل.</p>
+          </div>
+
+          <form id="order-form" class="space-y-5" novalidate>
+            <div>
+              <div class="mb-3 flex items-center justify-between">
+                <span class="text-sm font-bold text-grove-800">اختر العرض</span>
+                <span class="text-[11px] font-bold text-gold-600">أسعار ثابتة</span>
+              </div>
+              <div class="grid grid-cols-2 gap-3" id="qty-group" role="group" aria-label="الكمية">
+                <button type="button" data-qty="1" aria-pressed="true" class="pack-card rounded-2xl border border-leaf-200 bg-grove-50 px-3.5 py-4 text-right">
+                  <span class="flex items-start justify-between gap-2">
+                    <span class="pack-label text-sm font-bold text-grove-800">قارورة واحدة</span>
+                    <span class="pack-check inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-leaf-200 bg-white text-transparent opacity-50">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+                    </span>
+                  </span>
+                  <span class="pack-price mt-3 flex items-baseline gap-1 text-[1.35rem] font-extrabold text-gold-700" style="direction:ltr;unicode-bidi:isolate">
+                    <span>2 500</span>
+                    <span class="text-sm font-bold">دج</span>
+                  </span>
+                </button>
+
+                <button type="button" data-qty="2" aria-pressed="false" class="pack-card rounded-2xl border border-gold-600/35 bg-white px-3.5 py-4 text-right">
+                  <span class="absolute -top-2.5 left-3 rounded-full bg-gold-600 px-2 py-0.5 text-[10px] font-bold text-white">الأفضل قيمة</span>
+                  <span class="flex items-start justify-between gap-2">
+                    <span>
+                      <span class="pack-label block text-sm font-bold text-grove-800">قارورتان</span>
+                      <span class="mt-0.5 block text-[11px] font-bold text-gold-600">وفر 1 500 دج</span>
+                    </span>
+                    <span class="pack-check inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-leaf-200 bg-white text-transparent opacity-50">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+                    </span>
+                  </span>
+                  <span class="pack-price mt-3 flex items-baseline gap-1 text-[1.35rem] font-extrabold text-gold-700" style="direction:ltr;unicode-bidi:isolate">
+                    <span>3 500</span>
+                    <span class="text-sm font-bold">دج</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label for="f-name" class="mb-1.5 block text-sm font-bold text-grove-800">الاسم الكامل</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" placeholder="الاسم واللقب" class="field h-12 w-full rounded-2xl border border-leaf-200 bg-grove-50 px-4 text-[15px]">
+                <p id="err-name" class="mt-1 hidden text-sm text-[#9A2B1F]" role="alert">أدخل اسمك الكامل</p>
+              </div>
+
+              <div>
+                <label for="f-phone" class="mb-1.5 block text-sm font-bold text-grove-800">رقم الهاتف</label>
+                <input id="f-phone" name="phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="05XXXXXXXX" class="field h-12 w-full rounded-2xl border border-leaf-200 bg-grove-50 px-4 text-[15px] text-right">
+                <p id="err-phone" class="mt-1 hidden text-sm text-[#9A2B1F]" role="alert">رقم الهاتف يجب أن يتكون من 10 أرقام</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label for="f-wilaya" class="mb-1.5 block text-sm font-bold text-grove-800">الولاية</label>
+                  <select id="f-wilaya" name="wilaya" class="field h-12 w-full rounded-2xl border border-leaf-200 bg-grove-50 px-3 text-[15px]">
+                    <option value="">اختر</option>
+                  </select>
+                  <p id="err-wilaya" class="mt-1 hidden text-sm text-[#9A2B1F]" role="alert">اختر الولاية</p>
+                </div>
+                <div>
+                  <label for="f-commune" class="mb-1.5 block text-sm font-bold text-grove-800">البلدية</label>
+                  <input id="f-commune" name="commune" type="text" placeholder="اختياري" class="field h-12 w-full rounded-2xl border border-leaf-200 bg-grove-50 px-3 text-[15px]">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <span class="mb-2 block text-sm font-bold text-grove-800">نوع التوصيل</span>
+              <div class="grid grid-cols-2 gap-2 rounded-2xl bg-grove-50 p-1.5" id="delivery-group" role="group" aria-label="نوع التوصيل">
+                <button type="button" data-delivery="home" aria-pressed="true" class="choice h-11 rounded-xl border border-transparent text-sm font-bold">إلى المنزل</button>
+                <button type="button" data-delivery="desk" aria-pressed="false" class="choice h-11 rounded-xl border border-transparent text-sm font-bold text-grove-800">إلى المكتب</button>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-2xl border border-grove-200">
+              <div class="flex items-center justify-between gap-3 bg-grove-50 px-4 py-3.5">
+                <div>
+                  <p class="text-[11px] font-bold tracking-wide text-leaf-600">ملخص الطلب</p>
+                  <p id="qty-label" class="mt-0.5 text-sm font-bold text-grove-800">قارورة واحدة</p>
+                </div>
+                <span class="inline-flex items-baseline gap-1 text-2xl font-extrabold text-gold-700" style="direction:ltr;unicode-bidi:isolate">
+                  <span id="total">2 500</span>
+                  <span class="text-sm">دج</span>
+                </span>
+              </div>
+              <div class="flex items-center justify-between gap-3 border-t border-grove-200 bg-white px-4 py-2.5 text-xs text-leaf-600">
+                <span>التوصيل</span>
+                <span class="font-bold text-grove-800">يُؤكَّد عند الاتصال</span>
+              </div>
+            </div>
+            <span id="subtotal" class="hidden">2 500</span>
+
+            <button type="submit" class="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-2xl bg-gold-600 text-lg font-extrabold text-white shadow-[0_10px_24px_rgba(168,121,28,0.28)] transition hover:-translate-y-0.5 hover:brightness-110">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+              إرسال الطلب
+            </button>
+            <p class="text-center text-xs leading-6 text-leaf-600">الدفع عند الاستلام · توصيل لكل الولايات</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Credibility -->
+    <section class="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="credibility-title">
+      <div class="mx-auto max-w-3xl">
+        <div class="reveal mb-8 text-center">
+          <p class="text-[12px] font-bold tracking-[0.18em] text-gold-600" dir="ltr">BIO AURA</p>
+          <h2 id="credibility-title" class="mt-2 font-cairo text-2xl font-extrabold text-grove-800 sm:text-[1.85rem]">
+            مصداقية المنتج وفوائده
+          </h2>
+          <p class="mt-2 text-[15px] text-leaf-700">مستخلص طبيعي لدعم التنفس والراحة اليومية</p>
+        </div>
+
+        <div class="space-y-5">
+          <figure class="reveal overflow-hidden rounded-[24px] border border-grove-200 bg-white shadow-soft">
+            <img
+              src="./assets/credibility-1.jpg"
+              alt="Olivara – تنفس بعمق وراحة مع فوائد تهدئة مجرى الهواء والنوم الهادئ"
+              class="block w-full h-auto"
+              loading="lazy"
+            >
+          </figure>
+          <figure class="reveal overflow-hidden rounded-[24px] border border-grove-200 bg-white shadow-soft" style="transition-delay:100ms">
+            <img
+              src="./assets/credibility-2.jpg"
+              alt="Olivara – يخفف التهابات الأنف والحنجرة ويقلل احتقان الجيوب الأنفية"
+              class="block w-full h-auto"
+              loading="lazy"
+            >
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="px-4 py-16 sm:px-6 sm:py-20">
+      <div class="mx-auto max-w-6xl">
+        <div class="reveal mx-auto mb-10 max-w-2xl text-center">
+          <h2 class="font-cairo text-3xl font-extrabold text-grove-800 text-balance sm:text-[2rem]">عناية طبيعية متكاملة لصحة أفضل</h2>
+          <p class="mt-3 text-leaf-700">
+            Olivara زيت زيتون طبيعي مركز من BIO AURA، مستخلص من أجود ثمار الزيتون المتوسطي، وغني بالمركبات الطبيعية المفيدة لصحتك.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="reveal group rounded-3xl border border-grove-200/80 bg-white/80 p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-grove-100 text-grove-800 transition group-hover:bg-grove-800 group-hover:text-gold-400">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+            </div>
+            <h3 class="font-cairo text-lg font-bold text-grove-800">طبيعي 100%</h3>
+            <p class="mt-1 text-[15px] text-leaf-700">غني بمضادات الأكسدة من أجود الثمار.</p>
+          </article>
+
+          <article class="reveal group rounded-3xl border border-grove-200/80 bg-white/80 p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft" style="transition-delay:80ms">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-grove-100 text-grove-800 transition group-hover:bg-grove-800 group-hover:text-gold-400">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="M9 12h6"></path><path d="M12 9v6"></path></svg>
+            </div>
+            <h3 class="font-cairo text-lg font-bold text-grove-800">يخفف الالتهابات</h3>
+            <p class="mt-1 text-[15px] text-leaf-700">دعم لطيف للجسم بشكل يومي طبيعي.</p>
+          </article>
+
+          <article class="reveal group rounded-3xl border border-grove-200/80 bg-white/80 p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft" style="transition-delay:160ms">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-grove-100 text-grove-800 transition group-hover:bg-grove-800 group-hover:text-gold-400">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"></path><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"></path><path d="M9.8 4.4A2 2 0 1 1 11 8H2"></path></svg>
+            </div>
+            <h3 class="font-cairo text-lg font-bold text-grove-800">تنفس أسهل</h3>
+            <p class="mt-1 text-[15px] text-leaf-700">يساعد على التنفس ويقلل احتقان الجيوب.</p>
+          </article>
+
+          <article class="reveal group rounded-3xl border border-grove-200/80 bg-white/80 p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft" style="transition-delay:240ms">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-grove-100 text-grove-800 transition group-hover:bg-grove-800 group-hover:text-gold-400">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </div>
+            <h3 class="font-cairo text-lg font-bold text-grove-800">يدعم المناعة</h3>
+            <p class="mt-1 text-[15px] text-leaf-700">مركب طبيعي يساند مناعتك اليومية.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pack contents -->
+    <section class="bg-grove-100/80 px-4 py-16 sm:px-6 sm:py-20">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-14">
+        <div class="reveal order-2 lg:order-1 space-y-5">
+          <h2 class="font-cairo text-3xl font-extrabold text-grove-800 sm:text-[2rem]">ماذا يحتوي طلبك؟</h2>
+
+          <div class="space-y-3">
+            <div class="rounded-2xl bg-white p-5 shadow-sm">
+              <h3 class="font-cairo text-lg font-bold text-grove-800">قارورة Olivara Premium Essence</h3>
+              <p class="mt-1 text-[15.5px] text-leaf-700">زيت الزيتون الطبيعي المركز في قارورة زجاجية داكنة بحجم 30 مل.</p>
+            </div>
+            <div class="rounded-2xl bg-white p-5 shadow-sm">
+              <h3 class="font-cairo text-lg font-bold text-grove-800">علبة BIO AURA الأنيقة</h3>
+              <p class="mt-1 text-[15.5px] text-leaf-700">تغليف أصلي يحفظ المنتج ويحمل علامة BIO AURA Natural Care.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal order-1 lg:order-2">
+          <img
+            src="./assets/c3817fb95f9e5a56247401974d2a38bb.jpg"
+            alt="قارورة Olivara وعلبتها وكوب من الزيت بين أغصان الزيتون"
+            class="w-full rounded-[28px] object-cover shadow-soft animate-float"
+            style="aspect-ratio: 868 / 941; animation-duration: 7s;"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section class="leaf-pattern bg-grove-800 px-4 py-16 text-grove-100 sm:px-6 sm:py-20">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="reveal mb-8 text-center font-cairo text-3xl font-extrabold text-white sm:text-[2rem]">لماذا Olivara؟</h2>
+        <ul class="space-y-4">
+          <li class="reveal flex items-start gap-3 text-lg">
+            <svg class="mt-1 shrink-0 text-gold-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span>مستخلص طبيعي من أجود ثمار الزيتون</span>
+          </li>
+          <li class="reveal flex items-start gap-3 text-lg" style="transition-delay:80ms">
+            <svg class="mt-1 shrink-0 text-gold-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span>منتج أصلي وجودة مضمونة 100%</span>
+          </li>
+          <li class="reveal flex items-start gap-3 text-lg" style="transition-delay:160ms">
+            <svg class="mt-1 shrink-0 text-gold-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span>توصيل سريع لكل الولايات</span>
+          </li>
+          <li class="reveal flex items-start gap-3 text-lg" style="transition-delay:240ms">
+            <svg class="mt-1 shrink-0 text-gold-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span>دعم ومتابعة بعد الشراء</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="px-4 py-16 text-center sm:px-6 sm:py-20">
+      <div class="reveal mx-auto max-w-xl space-y-5">
+        <h2 class="font-cairo text-3xl font-extrabold text-grove-800 text-balance sm:text-[2rem]">ابدأ اليوم رحلتك مع عناية طبيعية</h2>
+        <a href="#order" class="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-gold-600 px-8 font-cairo text-xl font-bold text-white transition hover:-translate-y-0.5 hover:brightness-110 sm:w-auto sm:min-w-[280px]">
+          اطلب الآن
+        </a>
+        <p class="text-[13.5px] leading-8 text-leaf-600">
+          هذا المنتج لا يُغني عن استشارة الطبيب، وقد تختلف النتائج من شخص لآخر حسب النظام الغذائي ونمط الحياة.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-grove-950 px-4 py-7">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 sm:justify-between">
+      <span class="font-display text-xl font-bold text-white" dir="ltr">Olivara</span>
+      <span class="text-sm text-[#B9C6AA]" dir="ltr">@bioauralabs</span>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const PACKS = {
+        1: { label: 'قارورة واحدة', price: 2500 },
+        2: { label: 'قارورتان', price: 3500 },
+      };
+
+      const wilayaNames = [
+        'أدرار','الشلف','الأغواط','أم البواقي','باتنة','بجاية','بسكرة','بشار','البليدة','البويرة',
+        'تمنراست','تبسة','تلمسان','تيارت','تيزي وزو','الجزائر','الجلفة','جيجل','سطيف','سعيدة',
+        'سكيكدة','سيدي بلعباس','عنابة','قالمة','قسنطينة','المدية','مستغانم','المسيلة','معسكر','ورقلة',
+        'وهران','البيض','إليزي','برج بوعريريج','بومرداس','الطارف','تندوف','تيسمسيلت','الوادي','خنشلة',
+        'سوق أهراس','تيبازة','ميلة','عين الدفلى','النعامة','عين تموشنت','غرداية','غليزان','تيميمون','برج باجي مختار',
+        'أولاد جلال','بني عباس','عين صالح','عين قزام','تقرت','جانت','المغير','المنيعة'
+      ];
+
+      const state = { qty: 1, delivery: 'home' };
+
+      const els = {
+        form: document.getElementById('order-form'),
+        success: document.getElementById('success'),
+        wilaya: document.getElementById('f-wilaya'),
+        name: document.getElementById('f-name'),
+        phone: document.getElementById('f-phone'),
+        commune: document.getElementById('f-commune'),
+        qtyLabel: document.getElementById('qty-label'),
+        subtotal: document.getElementById('subtotal'),
+        total: document.getElementById('total'),
+        errName: document.getElementById('err-name'),
+        errPhone: document.getElementById('err-phone'),
+        errWilaya: document.getElementById('err-wilaya'),
+      };
+
+      const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+      wilayaNames.forEach((name, i) => {
+        const opt = document.createElement('option');
+        opt.value = String(i + 1).padStart(2, '0') + ' - ' + name;
+        opt.textContent = opt.value;
+        els.wilaya.appendChild(opt);
+      });
+
+      function updatePrices() {
+        const pack = PACKS[state.qty];
+        els.qtyLabel.textContent = pack.label;
+        els.subtotal.textContent = fmt(pack.price);
+        els.total.textContent = fmt(pack.price);
+      }
+
+      function bindChoices(groupId, attr, key) {
+        const group = document.getElementById(groupId);
+        group.addEventListener('click', (e) => {
+          const btn = e.target.closest('button[' + attr + ']');
+          if (!btn) return;
+          state[key] = attr === 'data-qty' ? Number(btn.getAttribute(attr)) : btn.getAttribute(attr);
+          group.querySelectorAll('button').forEach((b) => {
+            b.setAttribute('aria-pressed', String(b === btn));
+          });
+          updatePrices();
+        });
+      }
+
+      bindChoices('qty-group', 'data-qty', 'qty');
+      bindChoices('delivery-group', 'data-delivery', 'delivery');
+
+      els.phone.addEventListener('input', () => {
+        els.phone.value = els.phone.value.replace(/[^0-9]/g, '').slice(0, 10);
+      });
+
+      els.form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameOk = els.name.value.trim().length >= 3;
+        const phoneOk = /^[0-9]{10}$/.test(els.phone.value);
+        const wilayaOk = Boolean(els.wilaya.value);
+
+        els.errName.classList.toggle('hidden', nameOk);
+        els.errPhone.classList.toggle('hidden', phoneOk);
+        els.errWilaya.classList.toggle('hidden', wilayaOk);
+
+        if (!(nameOk && phoneOk && wilayaOk)) return;
+
+        els.form.classList.add('hidden');
+        els.success.classList.remove('hidden');
+        els.success.classList.add('flex');
+      });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      updatePrices();
+    })();
+  </script>
+</body>
+</html>
