@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
@@ -164,13 +164,19 @@
   <main>
     <!-- Product image + offers + order form -->
     <section id="top" class="bg-grove-50">
-      <div class="mx-auto max-w-xl overflow-hidden">
+      <div class="relative mx-auto max-w-xl overflow-hidden">
         <img
           src="./product-1.jpg"
-          alt="قارورة وعلبة Olivara Premium Essence Oil من BIO AURA"
+          alt="Olivara Oil – خلاصة طبيعية للعناية بالجسم من BIO AURA"
           class="block w-full object-cover object-center"
           style="aspect-ratio: 1 / 1; max-height: 520px;"
         >
+        <div class="pointer-events-none absolute inset-x-0 bottom-[7%] flex justify-center px-4">
+          <div class="inline-flex items-baseline gap-2 rounded-full border-2 border-gold-400 bg-grove-800 px-7 py-2.5 shadow-[0_8px_28px_rgba(0,0,0,0.35)]" style="direction:ltr;unicode-bidi:isolate">
+            <span class="text-2xl font-extrabold text-gold-300 sm:text-3xl">2 500</span>
+            <span class="text-base font-bold text-gold-300">دج</span>
+          </div>
+        </div>
       </div>
 
       <div class="mx-auto max-w-xl px-4 pb-1 pt-6 text-center sm:px-6">
@@ -453,10 +459,164 @@
       </div>
     </section>
 
+    <!-- Lab analysis results -->
+    <section id="lab-results" class="px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="lab-title">
+      <div class="mx-auto max-w-3xl">
+        <div class="reveal mb-8 text-center">
+          <p class="text-[12px] font-bold tracking-[0.18em] text-gold-600" dir="ltr">HIGH QUALITY CONTROL</p>
+          <h2 id="lab-title" class="mt-2 font-cairo text-2xl font-extrabold text-grove-800 sm:text-[1.85rem]">
+            نتائج التحاليل المخبرية
+          </h2>
+          <p class="mt-2 text-[15px] text-leaf-700">
+            تحاليل رسمية لعيّنة Olivara Oil من مختبر HQC – الجزائر
+          </p>
+        </div>
+
+        <div class="reveal mb-5 rounded-[24px] border border-grove-200 bg-white p-5 shadow-soft sm:p-6">
+          <h3 class="font-cairo text-lg font-extrabold text-grove-800">بيانات العيّنة</h3>
+          <dl class="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+            <div class="rounded-xl bg-grove-50 px-3.5 py-3">
+              <dt class="text-leaf-600">المخبر</dt>
+              <dd class="mt-0.5 font-bold text-grove-800">Laboratoire High Quality Control (HQC)</dd>
+            </div>
+            <div class="rounded-xl bg-grove-50 px-3.5 py-3">
+              <dt class="text-leaf-600">طالب التحليل</dt>
+              <dd class="mt-0.5 font-bold text-grove-800">BIOAURA LABS</dd>
+            </div>
+            <div class="rounded-xl bg-grove-50 px-3.5 py-3">
+              <dt class="text-leaf-600">العلامة التجارية</dt>
+              <dd class="mt-0.5 font-bold text-grove-800">BIOAURA</dd>
+            </div>
+            <div class="rounded-xl bg-grove-50 px-3.5 py-3">
+              <dt class="text-leaf-600">طبيعة العيّنة</dt>
+              <dd class="mt-0.5 font-bold text-grove-800">Olivara Oil – 30 مل</dd>
+            </div>
+            <div class="rounded-xl bg-grove-50 px-3.5 py-3">
+              <dt class="text-leaf-600">رقم التسجيل</dt>
+              <dd class="mt-0.5 font-bold text-grove-800" dir="ltr">6758/26</dd>
+            </div>
+            <div class="rounded-xl bg-grove-50 px-3.5 py-3">
+              <dt class="text-leaf-600">تاريخ الصنع / الاقتطاع</dt>
+              <dd class="mt-0.5 font-bold text-grove-800" dir="ltr">26/10/2026</dd>
+            </div>
+            <div class="rounded-xl bg-grove-50 px-3.5 py-3">
+              <dt class="text-leaf-600">تاريخ السحب والتحليل</dt>
+              <dd class="mt-0.5 font-bold text-grove-800" dir="ltr">28/10/2026</dd>
+            </div>
+            <div class="rounded-xl bg-grove-50 px-3.5 py-3">
+              <dt class="text-leaf-600">تاريخ إصدار التقرير</dt>
+              <dd class="mt-0.5 font-bold text-grove-800" dir="ltr">03/11/2026</dd>
+            </div>
+          </dl>
+          <p class="mt-3 text-xs leading-6 text-leaf-600">
+            العنوان: 13، خوجة الجلد، العيون، بئر مراد رايس – الجزائر · هاتف:
+            <span dir="ltr">+213 542 325 737 / +213 560 400 443</span>
+          </p>
+        </div>
+
+        <div class="reveal mb-5 overflow-hidden rounded-[24px] border border-grove-200 bg-white shadow-soft" style="transition-delay:80ms">
+          <div class="border-b border-grove-200 bg-grove-50 px-5 py-4">
+            <h3 class="font-cairo text-lg font-extrabold text-grove-800">التحليل الفيزيوكيميائي</h3>
+            <p class="mt-0.5 text-sm text-leaf-700">Bulletin d’analyse physico-chimique</p>
+          </div>
+          <div class="overflow-x-auto px-2 pb-2 sm:px-4">
+            <table class="mt-3 w-full min-w-[320px] text-right text-sm">
+              <thead>
+                <tr class="text-leaf-600">
+                  <th class="px-3 py-2 font-bold">المعامل</th>
+                  <th class="px-3 py-2 font-bold">النتيجة</th>
+                  <th class="px-3 py-2 font-bold">الوحدة</th>
+                  <th class="px-3 py-2 font-bold">الطريقة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-grove-100">
+                  <td class="px-3 py-3 font-bold text-grove-800">الكثافة (Densité)</td>
+                  <td class="px-3 py-3 font-extrabold text-gold-700" dir="ltr">0,917</td>
+                  <td class="px-3 py-3 text-grove-800" dir="ltr">g/cm³</td>
+                  <td class="px-3 py-3 text-grove-800">Densimétrie</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="reveal overflow-hidden rounded-[24px] border border-grove-200 bg-white shadow-soft" style="transition-delay:140ms">
+          <div class="border-b border-grove-200 bg-grove-50 px-5 py-4">
+            <h3 class="font-cairo text-lg font-extrabold text-grove-800">التحليل الميكروبيولوجي</h3>
+            <p class="mt-0.5 text-sm text-leaf-700">Bulletin d’analyse microbiologique</p>
+          </div>
+          <div class="overflow-x-auto px-2 pb-2 sm:px-4">
+            <table class="mt-3 w-full min-w-[480px] text-right text-sm">
+              <thead>
+                <tr class="text-leaf-600">
+                  <th class="px-3 py-2 font-bold">المعامل</th>
+                  <th class="px-3 py-2 font-bold">النتيجة</th>
+                  <th class="px-3 py-2 font-bold">المرجع</th>
+                  <th class="px-3 py-2 font-bold">المعيار (UFC/g)</th>
+                </tr>
+              </thead>
+              <tbody class="text-grove-800">
+                <tr class="border-t border-grove-100">
+                  <td class="px-3 py-3 font-bold">كائنات هوائية عند 30°م</td>
+                  <td class="px-3 py-3 font-extrabold text-grove-700">غياب</td>
+                  <td class="px-3 py-3">Pharmacopée européenne 6.0</td>
+                  <td class="px-3 py-3" dir="ltr">10²</td>
+                </tr>
+                <tr class="border-t border-grove-100">
+                  <td class="px-3 py-3 font-bold">الخمائر (Levures)</td>
+                  <td class="px-3 py-3 font-extrabold text-grove-700">غياب</td>
+                  <td class="px-3 py-3">Pharmacopée européenne 6.0</td>
+                  <td class="px-3 py-3">—</td>
+                </tr>
+                <tr class="border-t border-grove-100">
+                  <td class="px-3 py-3 font-bold">العفن (Moisissures)</td>
+                  <td class="px-3 py-3 font-extrabold text-grove-700">غياب</td>
+                  <td class="px-3 py-3">Pharmacopée européenne 6.0</td>
+                  <td class="px-3 py-3">—</td>
+                </tr>
+                <tr class="border-t border-grove-100">
+                  <td class="px-3 py-3 font-bold">الخمائر والعفن معًا</td>
+                  <td class="px-3 py-3 font-extrabold text-grove-700">غياب</td>
+                  <td class="px-3 py-3">Pharmacopée européenne 6.0</td>
+                  <td class="px-3 py-3" dir="ltr">10¹</td>
+                </tr>
+                <tr class="border-t border-grove-100">
+                  <td class="px-3 py-3 font-bold">Staphylococcus aureus</td>
+                  <td class="px-3 py-3 font-extrabold text-grove-700">غياب</td>
+                  <td class="px-3 py-3">Pharmacopée européenne 6.0</td>
+                  <td class="px-3 py-3">Absence</td>
+                </tr>
+                <tr class="border-t border-grove-100">
+                  <td class="px-3 py-3 font-bold">Pseudomonas aeruginosa</td>
+                  <td class="px-3 py-3 font-extrabold text-grove-700">غياب</td>
+                  <td class="px-3 py-3">Pharmacopée européenne 6.0</td>
+                  <td class="px-3 py-3">Absence</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="m-4 rounded-2xl bg-grove-800 px-4 py-4 text-center text-grove-50 sm:mx-5">
+            <p class="text-sm font-bold text-gold-400">الخلاصة</p>
+            <p class="mt-1 text-[15px] font-bold leading-7">
+              الجودة البكتريولوجية مرضية ضمن المعايير المحددة.
+            </p>
+            <p class="mt-1 text-xs text-grove-100/80" dir="ltr">
+              Qualité bactériologique satisfaisante dans le cadre des critères déterminés.
+            </p>
+          </div>
+        </div>
+
+        <p class="reveal mt-5 text-center text-xs leading-6 text-leaf-600">
+          التقارير صادرة عن مختبر High Quality Control بتاريخ 03/11/2026، وصالحة للعيّنة/الحصة المحلَّلة فقط.
+        </p>
+      </div>
+    </section>
+
     <!-- Closing CTA -->
     <section class="px-4 py-16 text-center sm:px-6 sm:py-20">
       <div class="reveal mx-auto max-w-xl space-y-5">
-        <h2 class="font-cairo text-3xl font-extrabold text-grove-800 text-balance sm:text-[2rem]">ابدأ اليوم رحلتك مع عناية طبيعية</h2>
+        <h2 class="font-cairo text-3xl font-extrabold text-grove-800 text-balance sm:text-[1.85rem]">ابدأ اليوم رحلتك مع عناية طبيعية</h2>
         <a href="#order" class="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-gold-600 px-8 font-cairo text-xl font-bold text-white transition hover:-translate-y-0.5 hover:brightness-110 sm:w-auto sm:min-w-[280px]">
           اطلب الآن
         </a>
